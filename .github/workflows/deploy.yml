@@ -30,7 +30,7 @@ jobs:
         run: npm run docs:build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4  # ✅ 更新到 v4
+        uses: actions/upload-pages-artifact@v1  # ✅ 更新到 v4
         with:
           path: docs/.vitepress/dist  # 确保这个路径正确
 
