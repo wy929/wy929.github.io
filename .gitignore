@@ -8,12 +8,12 @@ yarn.lock
 
 # 💡 VitePress 相关
 docs/.vitepress/cache/
-# docs/.vitepress/dist/
+docs/.vitepress/dist/
 docs/.vitepress/.temp/
 
 # 💡 构建文件（GitHub Actions 部署时会自动生成）
-# dist/
-# out/
+dist/
+out/
 
 # 💡 日志文件
 npm-debug.log*
