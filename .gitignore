@@ -1,0 +1,33 @@
+# 💡 Node.js 相关
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+.vscode/
+.idea/
+
+# 💡 VitePress 相关
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+docs/.vitepress/.temp/
+
+# 💡 构建文件（GitHub Actions 部署时会自动生成）
+dist/
+out/
+
+# 💡 日志文件
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 💡 本地环境文件（如果你使用了 dotenv）
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+# 💡 macOS / Linux / Windows 系统文件
+.DS_Store
+Thumbs.db
