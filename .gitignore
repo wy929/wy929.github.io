@@ -1,6 +1,6 @@
 # 💡 Node.js 相关
 node_modules/
-package-lock.json
+# package-lock.json
 pnpm-lock.yaml
 yarn.lock
 .vscode/
