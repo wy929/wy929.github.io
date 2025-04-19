@@ -2,8 +2,8 @@
 
 <div align="center">
 
-<a href="https://justin3go.com" target="blank">
-  <img src="https://justin3go.com/ava.png" height="100px" alt="logo"/>
+<a href="wy929.github.io" target="blank">
+  <img src="https://wy929.github.io/ava.png" height="100px" alt="logo"/>
 </a>
 
 # Justin3go Blog
