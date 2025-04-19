@@ -1,0 +1,22 @@
+
+:root {
+	--vp-c-red-1: red;
+	--vp-c-blue-1: #2a408e;
+	--vp-c-blue-2: red;
+	--vp-c-blue-3: #7494ec;
+	--vp-c-blue-soft: rgba(110, 156, 190, 0.14);
+    
+	--vp-c-yellow-1: #aa9100;
+	--vp-c-yellow-2: #d5b811;
+	--vp-c-yellow-3: #ecce23;
+	--vp-c-yellow-soft: rgba(186, 186, 186, 0.14);
+
+    --vp-c-light-blue-1: #8ab4f8;
+
+    --vp-c-orange-1: #d2603a;
+
+    --vp-c-black-1: #1B1B1E;
+	--vp-c-black-2: #27282b;
+
+	--vp-c-gray-1: #a2a19f;
+}

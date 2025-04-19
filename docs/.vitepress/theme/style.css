@@ -1,3 +1,36 @@
+@import "./colors/black.css";
+
+/**
+ * Colors Theme
+ * -------------------------------------------------------------------------- */
+
+ :root {
+	/* --vp-nav-bg-color: var(--vp-c-gray-1);
+	--vp-nav-screen-bg-color: var(--vp-c-gray-1); */
+	--vp-c-brand-1: var(--vp-c-blue-1);
+	--vp-c-brand-2: var(--vp-c-orange-1);
+	--vp-c-brand-3: var(--vp-c-blue-3);
+	--vp-c-brand-soft: var(--vp-c-blue-soft);
+}
+
+.dark {
+    --vp-c-bg: var(--vp-c-black-1);
+	--vp-nav-bg-color: var(--vp-c-black-2);
+	--vp-nav-screen-bg-color: var(--vp-c-black-2);
+	--vp-c-brand-1: var(--vp-c-light-blue-1);
+	--vp-c-brand-2: var(--vp-c-orange-1);
+	--vp-c-brand-3: var(--vp-c-yellow-3);
+	--vp-c-brand-soft: var(--vp-c-yellow-soft);
+}
+
+:root {
+	--td-border-level-2-color: var(--vp-c-brand-soft) !important;
+	--td-brand-color: var(--vp-c-brand-1) !important;
+	--td-brand-color-light: var(--vp-c-brand-soft) !important;
+	--td-brand-color-hover: var(--vp-c-brand-1) !important;
+	--td-brand-color-active: var(--vp-c-brand-2) !important;
+}
+
 /** 代码字体 */
 @font-face {
 	font-family: "FiraCode";
@@ -27,7 +60,8 @@
  * instead because those are "Theme (light or dark)" dependant.
  * -------------------------------------------------------------------------- */
 
-:root {
+
+/* :root {
 	--vp-c-blue-1: #2949a4;
 	--vp-c-blue-2: #0749ff;
 	--vp-c-blue-3: #7494ec;
@@ -40,43 +74,13 @@
 }
 
 /**
- * Colors Theme
- * -------------------------------------------------------------------------- */
-
-:root {
-	--vp-c-brand-1: var(--vp-c-blue-1);
-	--vp-c-brand-2: var(--vp-c-blue-2);
-	--vp-c-brand-3: var(--vp-c-blue-3);
-	--vp-c-brand-soft: var(--vp-c-blue-soft);
-}
-
-.dark {
-	--vp-c-brand-1: var(--vp-c-yellow-1);
-	--vp-c-brand-2: var(--vp-c-yellow-2);
-	--vp-c-brand-3: var(--vp-c-yellow-3);
-	--vp-c-brand-soft: var(--vp-c-yellow-soft);
-}
-
-/**
  * Typography
  * -------------------------------------------------------------------------- */
+
 
 :root {
 	/* --vp-font-family-base: "SourceHanSerifCN"; */
 	--vp-font-family-mono: "FiraCode";
-}
-
-:root {
-	--td-border-level-2-color: var(--vp-c-brand-soft) !important;
-	--td-brand-color: var(--vp-c-brand-1) !important;
-	--td-brand-color-light: var(--vp-c-brand-soft) !important;
-	--td-brand-color-hover: var(--vp-c-brand-1) !important;
-	--td-brand-color-active: var(--vp-c-brand-2) !important;
-	/* 字体 family token */
-	/* --td-font-family: SourceHanSerifCN, PingFang SC, Microsoft YaHei,
-		Arial Regular;
-	--td-font-family-medium: SourceHanSerifCN, PingFang SC, Microsoft YaHei,
-		Arial Medium; */
 }
 
 /**
@@ -153,9 +157,10 @@ main > div > div > pre > code {
 }
 
 /** 磨砂玻璃效果设置 */
-.VPNavBar {
+/* .VPNavBar {
 	background-color: transparent !important;
 }
+
 .VPNav .content .content-body {
 	backdrop-filter: blur(36px);
 	background-color: linear-gradient(
@@ -179,7 +184,7 @@ main > div > div > pre > code {
 .has-aside .container {
 	backdrop-filter: none;
 	background-color: none !important;
-}
+} */
 
 /** i18n 选项不显示下拉图标 */
 .vpi-chevron-down,

@@ -5,8 +5,9 @@ import TDesign from 'tdesign-vue-next';
 
 // 引入组件库的少量全局样式变量
 import 'tdesign-vue-next/es/style/index.css';
-
+// 引入主题的全局样式
 import "./style.css";
+
 import Comment from "./components/Comment.vue";
 import ImageViewer from "./components/ImageViewer.vue"
 import GoBack from "./components/GoBack.vue";
