@@ -1,6 +1,8 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from "vue";
 import Theme from 'vitepress/theme' // https://vitepress.dev/zh/guide/extending-default-theme#using-different-fonts
+import TDesign from 'tdesign-vue-next';
+
 // 引入组件库的少量全局样式变量
 import 'tdesign-vue-next/es/style/index.css';
 
@@ -21,22 +23,23 @@ export default {
 	},
 
 	enhanceApp({ app, router }: any) {
+		app.use(TDesign);
 		app.component("Comment", Comment);
 		app.component("ImageViewer", ImageViewer);
 		app.component("GoBack", GoBack);
 
-		router.onAfterRouteChanged = (to: string) => {
-			// 兼容旧博客的中文路径，重定向到新路径，避免外链失效
-			if (to.startsWith(encodeURI('/博客/'))) {
-				const newUrl = to.replace(encodeURI('/博客/'), '/posts/')
-				window.location.href = newUrl
-			}
+		// router.onAfterRouteChanged = (to: string) => {
+		// 	// 兼容旧博客的中文路径，重定向到新路径，避免外链失效
+		// 	if (to.startsWith(encodeURI('/博客/'))) {
+		// 		const newUrl = to.replace(encodeURI('/博客/'), '/posts/')
+		// 		window.location.href = newUrl
+		// 	}
 
-			if (to.startsWith(encodeURI('/笔记/'))) {
-				const newUrl = to.replace(encodeURI('/笔记/'), '/notes/')
-				window.location.href = newUrl
-			}
-		}
+		// 	if (to.startsWith(encodeURI('/笔记/'))) {
+		// 		const newUrl = to.replace(encodeURI('/笔记/'), '/notes/')
+		// 		window.location.href = newUrl
+		// 	}
+		// }
 	},
 };
 

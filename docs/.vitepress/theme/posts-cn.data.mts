@@ -15,7 +15,7 @@ interface Post {
 
 export declare const data: Post[]
 
-export default createContentLoader('posts/**/*.md', {
+export default createContentLoader('cn/posts/**/*.md', {
   excerpt: excerptFn,
   transform(raw): Post[] {
     return raw
@@ -39,15 +39,15 @@ function formatDate(raw: string): Post['date'] {
   date.setUTCHours(12)
   return {
     time: +date,
-    string: date.toLocaleDateString('en-US', {
+    string: date.toLocaleDateString('zh-Hans', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit'
     }),
-    year: date.toLocaleDateString('en-US', {
+    year: date.toLocaleDateString('zh-Hans', {
       year: 'numeric'
     }),
-    monthDay: date.toLocaleDateString('en-US', {
+    monthDay: date.toLocaleDateString('zh-Hans', {
       month: '2-digit',
       day: '2-digit'
     })

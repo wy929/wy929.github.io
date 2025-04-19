@@ -1,56 +1,55 @@
 ---
-title: DeepSeek具体到普通人的意义
+title: The Significance of DeepSeek for the Average Person
 date: 2025-01-31
 tags: 
   - DeepSeek
   - OpenAI
   - AI
   - LLM
-  - 开源
+  - Open Source
 ---
-# DeepSeek具体到普通人的意义
+# The Significance of DeepSeek for the Average Person
 
-> ✨文章摘要（AI生成）
+> ✨Article Summary (AI Generated)
 
 <!-- DESC SEP -->
 
-作为一个普通技术爱好者，我深切地感受到 DeepSeek 模型的革命性意义。它不仅仅是一个高性能的开源大模型，更是打破了传统 AI 使用的诸多限制。从效果到开源，从本地部署到中文能力，DeepSeek 为我们普通用户提供了前所未有的可能性。
+As an ordinary technology enthusiast, I deeply feel the revolutionary significance of the DeepSeek model. It is not just a high-performance open-source large model, but also breaks the many limitations of traditional AI usage. From effectiveness to open-source, from local deployment to Chinese language capabilities, DeepSeek provides unprecedented possibilities for us regular users.
 
 <!-- DESC SEP -->
 
 ![](https://oss.justin3go.com/blogs/how-deepseek-matters-to-everyone-cover.png)
 
-> 原文链接：[justin3go.com](https://justin3go.com/posts/how-deepseek-matters-to-everyone)
-## 概述
+> Original Link: [justin3go.com](https://justin3go.com/posts/how-deepseek-matters-to-everyone)
+## Overview
 
-最近，DeepSeek 很火，几乎被刷屏了，甚至 Github Trending 整页几乎都是 DeepSeek 相关的内容。
+Recently, DeepSeek has been quite popular, almost flooding the screen, and even GitHub Trending is almost entirely filled with DeepSeek-related content.
 
-毫无疑问，DeepSeek 的出现是具有重大意义的，当然，目前还有一些争议，这里不做讨论。我更在乎 DeepSeek 具体到我这种普通人有什么作用、帮助～
+Undoubtedly, the emergence of DeepSeek is of great significance. While there are currently some controversies, I will not discuss them here. I am more concerned with what specific role and assistance DeepSeek provides to an average person like me.
 
-追根溯源，DeepSeek 的作用、优势基本都是从这三点延伸出来的：
+Going back to the root, DeepSeek’s functions and advantages essentially stem from these three points:
 
-1. **效果好**：模型能力追赶甚至超越了世界顶尖大模型们的水准，这是前提，只有效果好，后续的两点才会更有价值；
-2. **开源**：意味着可以本地部署，也就是有本地化的那些优势，可以微调、无限制使用、隐私等；
-3. **[数据优势](https://x.com/DavidSHolz/status/1883222685741879722)**：在古代中国哲学和文学方面压倒了西方模型，中国的文学历史比西方多几千年（因为他们失去了大部分的罗马/希腊/埃及文学）。
+1. **Effectiveness**: The model’s capability meets or even surpasses that of world-class large models. This is a prerequisite; only if it performs well will the following two points be more valuable;
+2. **Open Source**: This means it can be deployed locally, offering localization advantages such as fine-tuning, unrestricted use, privacy, etc.;
+3. **[Data Advantage](https://x.com/DavidSHolz/status/1883222685741879722)**: It surpasses Western models in ancient Chinese philosophy and literature, given China’s literary history extends thousands of years longer than that of the West (since the West lost much of its Roman/Greek/Egyptian literature).
 
-除此之外，还有一些锦上添花的功能，如深度思考时也支持联网搜索，显式展示思维链思考过程。
+Apart from these, there are some additional features, such as supporting web searches during deep thinking and explicitly demonstrating the thought process chain.
 
-## 具体呢？
+## Specifically?
 
-基于上面三点核心优势，这里我简单列一下具体的一些优势，当然，欢迎补充：
+Based on the three core advantages above, here I briefly list some specific advantages—of course, feel free to add:
 
-1. 解除金钱上的限制，本地部署后，当你需要做一些长任务的时候，比如翻译，就不需要担心金额的消耗了；
-2. 解除速率的限制，本地部署后，这是你自己的模型，速率完全取决于你的本地算力，相对于调用API来说，OpenAI 做了分等级的速率限制的，甚至稍有异常还会被封账号；
-3. 解除地区的限制，很多顶尖大模型的API调用都限制了有些地区（如中国）无法使用这些API，客户端等
-4. 解除应用级别的限制，正因为之前许多大模型限制地区的API调用，不少应用也不得不放弃了该地区的用户，据我所知，字节的 AI IDE Trae 在中国是无法正常使用的
-5. 作为独立开发者也可以有更好的模型选择了，也不用去使用各种魔法了
-6. 隐私的保护，很多企业都限制员工使用 Cursor、Copilot 等 AI 编码助手，即使它承诺不拿你的数据去优化它的模型，但你还是会把关键数据、代码发送过去，因为这是远程的 API 调用
-7. 中文的限制，[似乎有一些大模型](https://x.com/Gorden_Sun/status/1884938028675944693)已经开始限制中文的输入了，也有大模型的中文输入的效果会弱于英文输入的效果，特别是在大模型出现的早期；
-8. 中文写作，DeepSeek 在古代中国哲学和文学方面压倒了西方模型，在中文写作方面的效果会更好；
-9. 玄学算命，同上，DeepSeek 更加了解中国文化，已经有[网友](https://x.com/benshandebiao/status/1884466428792955154)在使用它披八字了，效果还好，完全碾压；
-10. DeepSeek R1 1.5B 通过 WebGPU 在浏览器中完全本地运行，边缘计算也有更好的选择；
+1. Removal of financial constraints; post local deployment, when you need to perform lengthy tasks like translation, you no longer have to worry about cost consumption;
+2. Removal of rate limitations; post local deployment, it’s your model, and the rate depends entirely on your local computing power. Compared to API calls, OpenAI imposes tiered rate restrictions, and even slight anomalies might lead to account suspension;
+3. Removal of regional restrictions; many top large models' API calls limit usage in some regions (like China), preventing access to APIs, clients, etc.
+4. Removal of application-level restrictions; precisely because many large models restrict regional API calls, many applications have had to abandon users in those regions. As far as I know, ByteDance's AI IDE Trae cannot be used normally in China;
+5. As an independent developer, you also have better model options without needing to use various tricks;
+6. Privacy protection; many companies restrict employees from using AI coding assistants like Cursor and Copilot, even if they promise not to use your data to optimize their models. However, you still end up sending critical data and code because these are remote API calls;
+7. Restrictions on Chinese language; [it seems some large models](https://x.com/Gorden_Sun/status/1884938028675944693) have already started limiting Chinese input, and some perform worse in Chinese than they do in English, especially during the early days of large models;
+8. Chinese writing; DeepSeek excels in ancient Chinese philosophy and literature, leading to better performance in Chinese writing;
+9. Metaphysical fortune-telling; similarly, DeepSeek better understands Chinese culture, and some [users](https://x.com/benshandebiao/status/1884466428792955154) have been using it for profile analysis with remarkable results;
+10. DeepSeek R1 1.5B can run entirely locally in the browser via WebGPU, offering better options for edge computing;
 
-## 最后
+## Conclusion
 
-感谢 DeepSeek 将这个世界一流水准的基础模型开源～ 这不仅让我这种普通人、开发者有了更多选择，也从某种程度上刺激了技术的发展。
-
+Thanks to DeepSeek for open-sourcing a world-class foundational model. This not only offers people like me—ordinary individuals and developers—more options but also stimulates technological development to some extent.

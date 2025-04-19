@@ -1,5 +1,5 @@
 ---
-title: 谷歌 Agent2Agent（A2A）协议深度调研报告
+title: In-depth Research Report on Google Agent2Agent (A2A) Protocol
 date: 2025-04-10
 tags:
   - Agent2Agent
@@ -8,174 +8,174 @@ tags:
   - MCP
   - Google
 ---
-# 谷歌 Agent2Agent（A2A）协议深度调研报告
+# In-depth Research Report on Google Agent2Agent (A2A) Protocol
 
-> ✨文章摘要（AI生成）
-
-<!-- DESC SEP -->
-
-2025年4月，Google在 Cloud Next 2025 大会上正式发布了全新的 **Agent2Agent (A2A) 协议**。A2A是一个开放的互操作性协议，旨在打破不同AI代理框架和供应商之间的壁垒，实现跨平台的安全高效协作。该协议专为企业环境设计，通过标准化代理之间的通信，解决各类数据孤岛问题，使复杂工作流程的自动化成为可能并提升生产力。
-
-A2A发布时即获得超过50家行业领先企业的支持（如Atlassian、Box、Salesforce、SAP、ServiceNow、MongoDB等），为AI智能体提供了一个通用框架，让不同供应商或架构的代理能够安全交换信息、协调操作，并无缝集成到企业业务中。
-
-这一合作阵容体现出业界对AI代理互操作性的共同愿景：未来无论底层技术如何，AI智能体都能像网络服务一样自由“对话”和协同工作。
+> ✨Article Summary (AI Generated)
 
 <!-- DESC SEP -->
 
-## 技术原理
+In April 2025, Google officially announced a new **Agent2Agent (A2A) Protocol** at the Cloud Next 2025 event. A2A is an open interoperability protocol designed to break down barriers between different AI agent frameworks and vendors, enabling secure and efficient cross-platform collaboration. Specifically designed for enterprise environments, this protocol addresses data silo issues by standardizing communication between agents, enabling the automation of complex workflows and boosting productivity.
 
-### 核心架构
+Upon release, A2A received support from over 50 industry-leading enterprises (such as Atlassian, Box, Salesforce, SAP, ServiceNow, MongoDB, etc.). It provides a common framework for AI agents, allowing agents from different vendors or architectures to securely exchange information, coordinate actions, and integrate seamlessly into business operations.
 
-基于HTTP+JSON的AI代理通信协议，主要包含以下模块：
+This coalition reflects the industry's shared vision for AI agent interoperability, where in the future, regardless of the underlying technology, AI agents can "converse" and collaborate freely like network services.
 
-1. **Agent Card**  
-   - 位置：`/.well-known/agent.json`  
-   - 作用：JSON格式的代理能力说明书（含API端点、技能、认证方式）
+<!-- DESC SEP -->
 
-2. **角色模型**  
-   - 服务端：提供API接口（必须实现`tasks/send`等标准方法）  
-   - 客户端：通过HTTP调用其他代理  
+## Technical Principles
 
-3. **任务流程**  
-   - 生命周期：submitted → working → (input-required) → completed/failed  
-   - 交互单元：  
-     - **消息**：由多类型Part组成（文本/文件/结构化数据）  
-     - **工件**：任务产出的结构化结果  
+### Core Architecture
 
-4. **通信机制**  
-   - 基础模式：HTTP + JSON-RPC风格接口  
-   - 高级功能：  
-     - 实时推送：SSE协议（`tasks/sendSubscribe`）  
-     - 异步通知：Webhook回调  
-     - 多模态支持：通过Part类型实现  
+An AI agent communication protocol based on HTTP+JSON, primarily consisting of the following modules:
 
-5. **UX协商**  
-   - 代理间预先协商交互形式（如文本/语音/表单）
+1. **Agent Card**
+   - Location: `/.well-known/agent.json`
+   - Function: A JSON-formatted agent capability manual (including API endpoints, skills, authentication methods)
 
-### 基础框架与依赖
+2. **Role Model**
+   - Server: Provides API interfaces (requiring the implementation of standard methods such as `tasks/send`)
+   - Client: Makes HTTP calls to other agents
 
-A2A协议本身不依赖特定的AI模型或框架，但其出现背景与大型语言模型（LLM）驱动的自治代理趋势密切相关。
+3. **Task Flow**
+   - Lifecycle: submitted → working → (input-required) → completed/failed
+   - Interaction units:
+     - **Messages**: Composed of multiple types of Parts (text/file/structured data)
+     - **Artifacts**: Structured results produced by tasks
 
-协议的结构借鉴了分布式系统和微服务的思想，将每个AI代理视作一个独立服务，通过标准接口通信。这意味着任何基于LLM的代理开发框架（如LangChain、LangGraph、Google的Agent Developer Kit **ADK**、CrewAI、Genkit等）都可以实现A2A接口，从而与其它代理协同。
+4. **Communication Mechanism**
+   - Basic mode: HTTP + JSON-RPC style interfaces
+   - Advanced features:
+     - Real-time push: SSE protocol (`tasks/sendSubscribe`)
+     - Asynchronous notifications: Webhook callbacks
+     - Multimodal support: Achieved through the Part type
 
-Google强调A2A能够适配“**不透明的（opaque）**”智能体——即无需暴露内部推理过程或内存状态的代理。这对许多企业级应用至关重要，因为涉及安全和合规时，各代理更倾向通过明确定义的输入输出进行交互，而不共享内部细节。
+5. **UX Negotiation**
+   - Pre-negotiation of interaction forms between agents (e.g., text/voice/forms)
 
-总的来说，A2A提供的是一套**应用层协议**规范，开发者可以用任何技术栈来构建符合该规范的代理（例如后端用Python、Node.js等皆可），只要遵循HTTP+JSON的接口契约，即可与其他代理互联互通。
+### Basic Framework and Dependencies
 
-## 协议意义：设计目标及多智能体协作价值
+The A2A protocol itself does not rely on specific AI models or frameworks but is closely related to the trend of autonomous agents driven by large language models (LLM).
 
-### 设计初衷
+The protocol's structure draws upon the concepts of distributed systems and microservices, treating each AI agent as an independent service that communicates through standard interfaces. This means that any LLM-based agent development framework (such as LangChain, LangGraph, Google's Agent Developer Kit **ADK**, CrewAI, Genkit, etc.) can implement the A2A interface and thereby collaborate with other agents.
 
-Agent2Agent协议的推出，源自于企业在大规模部署AI代理时遇到的实际痛点。随着企业中不同部门和团队引入各式各样的AI驱动代理（有的用于客服，有的用于办公自动化等），如何让不同厂商、不同框架构建的代理彼此通信、协同完成更复杂的任务，成为一大挑战。
+Google emphasizes that A2A is adaptable to "opaque" agents—those that do not need to expose internal reasoning processes or memory states. This is crucial for many enterprise-level applications since, in terms of security and compliance, agents tend to interact through clearly defined inputs and outputs rather than sharing internal details.
 
-传统上，企业可能需要为每对交互的代理定制集成接口或编写“胶水代码”，这不但成本高昂且难以扩展。A2A协议的设计目标正是为**异构AI代理**建立一个共同语言，让它们可以**开箱即用地互相协作**，而无需针对每种组合单独开发适配层。Google在内部大规模代理系统部署方面积累了经验，并抽象出这些通用挑战，从而牵头制定了A2A这一开放标准，以供整个行业采用。
+In summary, A2A provides an **application layer protocol** specification. Developers can build compliant agents using any technology stack (such as backend in Python, Node.js, etc.), as long as they adhere to the HTTP+JSON interface contract, enabling interconnectivity with other agents.
 
-### 开放与中立
+## Protocol Significance: Design Goals and Multi-Agent Collaboration Value
 
-A2A定位为一个**开放协议标准**而非Google私有接口，这一点具有重要意义。首先，开放意味着任何组织或个人都可根据公开规范实现自己的A2A代理，Google本身也将协议以Apache 2.0许可证在GitHub上开源。超过50家科技公司、SaaS提供商和咨询机构在协议制定初期即参与其中，共同贡献需求和标准制定。
+### Design Intent
 
-这种多方合作确保了A2A具有**中立性和通用性**，避免一家厂商对标准的垄断。这与互联网早期的HTTP协议类似——作为开放标准被广泛认可，促进了不同系统之间的互联互通。同样，A2A协议也被寄望成为“**代理之间的HTTP**”，为AI代理打造出一个开放统一的交流层。在推出之时，就有观点将其视为行业走向**AI代理互操作标准化**的重要信号。
+The introduction of the Agent2Agent protocol stems from the real-world challenges enterprises face when deploying AI agents at scale. As various AI-powered agents (some for customer service, others for office automation, etc.) are introduced in different departments and teams, enabling communication and coordination between agents built by different vendors and frameworks to achieve more complex tasks becomes a significant challenge.
 
-### MCP的补充
+Traditionally, enterprises might need to custom-build integration interfaces or write "glue code" for each pair of interacting agents. This is not only costly but difficult to scale. The design goal of the A2A protocol is to establish a common language for **heterogeneous AI agents**, allowing them to **collaborate out of the box** without needing a custom integration layer for each combination. Drawing from its experience in deploying large-scale agent systems internally, Google has abstracted these common challenges, leading the way in forming the A2A as an open standard for the entire industry.
 
-值得注意的是，Google明确将A2A定位为Anthropic公司提出的**模型上下文协议（Model Context Protocol, MCP）**的补充而非替代。MCP协议主要解决的是**单个代理如何使用工具和获取外部上下文**的问题，即为AI模型调用API、检索数据库等提供一致的接口。而A2A关注的是**代理与代理之间的对话与协作**。
+### Openness and Neutrality
 
-Google形象地比喻道：“如果说MCP是**扳手**，为代理提供使用工具的手段；那么A2A就是**技工之间的对话**，让多个代理像技工团队一样交流诊断问题。” 也就是说，A2A并不是与MCP竞争，而是各司其职——MCP赋能单个代理连接外部工具和数据，A2A则让多个独立智能体彼此连接成更大的协作网络。两者相辅相成，共同构筑一个**更强大的自治代理生态**。
+A2A is positioned as an **open protocol standard** rather than a proprietary Google interface, which is significant. Firstly, being open means that any organization or individual can implement their own A2A agents according to the publicly available specifications, and Google itself has open-sourced the protocol under the Apache 2.0 license on GitHub. More than 50 tech companies, SaaS providers, and consulting organizations participated in the protocol drafting from the start, contributing to its demands and standards.
 
-### 提升自治与协同效能
+This multi-party collaboration ensures that A2A has **neutrality and universality**, avoiding dominance by a single vendor. This is akin to the early days of the internet's HTTP protocol—widely recognized as an open standard fostering interconnectivity between different systems. Similarly, the A2A protocol is also hoped to become the "HTTP between agents," creating an open and unified communication layer for AI agents. Upon its introduction, it was viewed by some as a crucial signal towards **AI agent interoperability standardization** in the industry.
 
-A2A协议对多智能体系统的价值在于**提高了代理自治协作的上限**。通过A2A，不同能力的智能体可以动态组成“**数字劳动力团队**”，协同处理单个代理无法完成的复杂任务。例如，一个销售AI助手可以直接请求另一个财务AI代理生成报价方案；客服机器人可以与仓储AI代理沟通库存信息。
+### Complement to MCP
 
-这种直接代理对接节省了人工协调或额外中间层，从而**提升任务完成的效率和成功率**。有研究表明，在企业场景下多智能体协作可使目标完成率较单代理方案提升显著幅度。同时，A2A的标准化方式也降低了引入新代理的边际成本——企业可以随时增添新的专能代理加入流程，它马上就能与现有代理“对话”，无需额外开发，实现**即插即用**的扩展性。
+Notably, Google positions A2A as a complement rather than a replacement for the **Model Context Protocol (MCP)** proposed by Anthropic. The MCP protocol primarily addresses how a single agent uses tools and accesses external context, providing a consistent interface for AI models to call APIs and retrieve databases. In contrast, A2A focuses on **dialogue and collaboration between agents**.
 
-### 安全与管控
+Google metaphorically explains: "If MCP is a **wrench** that enables agents to use tools, then A2A is the **dialogue between mechanics**, allowing multiple agents to communicate like a team of mechanics diagnosing problems." In other words, A2A does not compete with MCP; rather, it serves its function—MCP empowers a single agent to connect external tools and data, while A2A connects multiple independent agents into a larger collaborative network. Together, they complement and strengthen a more robust autonomous agent ecosystem.
 
-在强调开放协作的同时，A2A也注重企业所关心的安全和治理问题。协议设计内置了认证和授权机制，Agent Card中明确列出代理服务所需的身份认证方式。企业可通过统一的策略管理，控制哪些代理有权限互相通信，交换何种数据。
+### Enhancing Autonomy and Collaborative Efficiency
 
-这种**标准化管理**方式比起过去各接口各自为政，更有利于审计和风险控制。此外，因为A2A只要求共享任务所需的输入输出，而不涉及代理内部推理过程，企业可以在**保护机密算法和数据**的前提下，让代理参与协作。从长期来看，随着更多企业采用A2A，他们也能够获得**跨平台管理代理**的统一视图，对整个AI代理“编队”进行监控和优化。这种标准化、可管可控的特性，是A2A能够在企业环境落地的重要原因之一。
+The value of the A2A protocol in multi-agent systems lies in **increasing the ceiling of agent autonomy and collaboration**. Through A2A, agents with different capabilities can dynamically form "digital workforce teams" to collaboratively handle complex tasks that a single agent cannot accomplish. For example, a sales AI assistant can directly request a financial AI agent to generate a quote; a customer service chatbot can communicate with a warehouse AI agent about inventory information.
 
-## 应用场景：自动化、多代理协作、智能助手与企业通信
+This direct agent linkage saves on human coordination or extra intermediary layers, thereby **improving task efficiency and success rate**. Research indicates that multi-agent collaboration can significantly increase target completion rates compared to single-agent solutions in enterprise scenarios. Moreover, A2A's standardized approach lowers the marginal cost of introducing new agents—enterprises can add specialized agents into the workflow at any time, and they can immediately "converse" with existing agents without additional development, achieving **plug-and-play** extensibility.
 
-A2A协议作为多智能体协作的桥梁，在众多业务与产品场景中具有广泛的应用潜力。以下列举几个典型场景及案例，以展示A2A的价值：
+### Security and Governance
 
-- **企业流程自动化**  
-  在大型企业中，日常业务流程往往涉及多个系统和角色。通过A2A，不同职能的AI代理可以协同完成端到端的自动化流程。例如，在IT运维场景中，一个负责资产管理的代理可以向另一个负责采购的代理发送请求，自动完成“为新员工订购笔记本”这样的任务。
+While emphasizing open collaboration, A2A also focuses on the security and governance concerns important to enterprises. The protocol's design features built-in authentication and authorization mechanisms, with the Agent Card explicitly listing the identity authentication methods required for agent services. Enterprises can control which agents have permission to communicate with each other and exchange which data through unified policy management.
 
-- **多智能体协作**  
-  A2A最直接的用途就是让多个AI智能体组成协作团队，分工完成复杂任务。在人力资源招聘流程中，企业可能部署了不同智能体：一个负责筛选简历，另一个负责安排面试时间，还有一个负责回答候选人常见问题。通过A2A，这些代理可以互相通知进度并共享信息。
+This **standardized management** approach is more conducive to audit and risk control than having each interface operate independently. Additionally, since A2A only requires sharing the inputs and outputs needed for tasks without involving the internal reasoning process of agents, enterprises can have agents collaborate while **protecting proprietary algorithms and data**. In the long run, as more enterprises adopt A2A, they can also gain a **unified perspective for cross-platform agent management**, enabling monitoring and optimization of their entire AI agent "fleet." These standardized, controllable, and manageable features are critical to A2A's implementation in enterprise environments.
 
-- **智能助理与个人助手**  
-  现代的智能虚拟助理（无论面向个人用户还是职场办公）都在变得越来越复杂。通过A2A协议，智能助理可以不再是单一的AI模型，而是前端形象背后调用一组专能代理的集成体。例如，一个个人智能助手在帮用户规划海外旅行时，可以调用“航班预订代理”获取机票方案，再调用“行程优化代理”制定旅行日程，甚至与“翻译代理”协作获取当地语言帮助。
+## Application Scenarios: Automation, Multi-Agent Collaboration, Intelligent Assistants, and Enterprise Communication
 
-- **企业通信与协同办公**  
-  在大型组织里，不同部门可能各自采用了AI工具来提升工作效率。如果没有统一标准，这些代理各自为政，信息难以共享。借助A2A协议，企业能够实现跨部门AI代理的协同，如销售AI发现某客户有技术问题，可以直接通过A2A通知客服AI跟进。
+As a bridge for multi-agent collaboration, the A2A protocol has extensive application potential across numerous business and product scenarios. Below are some typical scenarios and examples to demonstrate the value of A2A:
 
-- **其他场景**  
-  除上述典型应用外，A2A还可用于客户服务、电子商务物流、金融风控等诸多领域。随着AI代理在各行业的深入应用，几乎所有需要多个智能体协同工作的场景都可能成为A2A的用武之地。
+- **Enterprise Process Automation**
+  In large enterprises, daily business processes often involve multiple systems and roles. Through A2A, agents with different functions can collaboratively complete end-to-end automated processes. For example, in IT operations scenarios, an agent responsible for asset management can request another agent in charge of procurement to automatically complete tasks such as "ordering a laptop for a new employee."
 
-## 行业影响：生态系统、竞品比较与产业趋势
+- **Multi-Agent Collaboration**
+  A2A's most direct application is enabling multiple AI agents to form collaboration teams to divide and complete complex tasks. In the human resources recruitment process, enterprises may deploy different agents: one responsible for screening resumes, another for scheduling interview times, and another for answering candidates' common questions. Through A2A, these agents can notify each other of progress and share information.
 
-### 生态系统构建
+- **Intelligent and Personal Assistants**
+  Modern intelligent virtual assistants, for personal or workplace use, are becoming increasingly complex. Through the A2A protocol, the intelligent assistant no longer needs to be a single AI model but can be an integrated system that calls on a group of specialized agents behind the scenes. For instance, a personal intelligent assistant planning overseas travel for a user can call a "flight booking agent" to acquire flight options and then call a "trip optimization agent" to plan the travel itinerary, even collaborating with a "translation agent" for local language assistance.
 
-A2A协议的推出对AI开发生态产生了立竿见影的推动作用。首先，众多合作伙伴的加入（如上图所示）表明业内主要玩家正携手打造统一的代理通信标准。
+- **Enterprise Communication and Collaborative Work**
+  In large organizations, different departments may use their AI tools to enhance efficiency. Without a unified standard, these agents operate independently, making it difficult to share information. The A2A protocol allows enterprises to achieve cross-departmental agent collaboration; for example, a sales AI finding a technical issue with a customer can directly notify a customer service AI to follow up through A2A.
 
-对于开发者而言，这意味着日后构建AI应用可以更方便地集成来自不同供应商的智能组件，而不用担心兼容性问题。
+- **Other Scenarios**
+  Beyond the aforementioned typical applications, A2A can also be used in customer service, e-commerce logistics, financial risk control, and many other fields. As AI agents are applied more deeply across industries, any scenario requiring multiple intelligent agents to collaborate can become a point of application for A2A.
 
-### 对竞争格局的影响
+## Industry Impact: Ecosystem, Competitive Comparison, and Industry Trends
 
-作为首个公开的多智能体通信协议标准, A2A也对业界主要AI平台厂商产生压力和影响。一方面，Google通过开放标准凝聚业界资源，巩固了其在企业AI领域的领导地位；另一方面，其他巨头如Microsoft、OpenAI、IBM等如果没有类似标准，需要考虑是否支持A2A以融入这一生态。
+### Ecosystem Construction
 
-未来客户很可能要求AI产品具备A2A兼容性以保护其投资。这将促使更多厂商加入支持行列，避免被生态排除。
+The introduction of the A2A protocol has already shown a tangible boosting effect on the AI development ecosystem. First, the involvement of numerous partners indicates that major industry players are working together to forge a unified agent communication standard.
 
-### 对开发者与企业的意义
+For developers, this means that in the future, when building AI applications, they will be able to conveniently integrate intelligent components from different vendors without worrying about compatibility issues.
 
-从开发者角度看，A2A的出现极大简化了多代理应用的开发。以前，实现两个不同框架AI系统的交互需要开发者精通双方接口并编写适配层；现在只需双方均实现A2A接口，即可直接调用。
+### Impact on Competitive Landscape
 
-这降低了企业部署AI代理的运营成本和技术风险，让更多传统IT部门也愿意尝试引入AI代理协作来改善业务。
+As the first open multi-agent communication protocol standard, A2A also places pressure and influence on major AI platform providers. On one hand, Google, by leveraging the open standard to rally industry resources, has solidified its leadership in enterprise AI; on the other hand, other giants like Microsoft, OpenAI, IBM, etc., if they lack a similar standard, will need to consider whether to support A2A to be part of this ecosystem.
 
-### 产业趋势展望
+In the future, customers may demand AI products to have A2A compatibility to protect their investments. This will prompt more vendors to join the support line to avoid being excluded from the ecosystem.
 
-A2A协议的诞生契合了AI产业向更自主、更协同发展的趋势。一方面，大型语言模型能力的提升催生了大量自治Agent的应用需求，单体智能逐渐无法满足复杂业务，这推动架构从“单智能体+工具”走向“多智能体协作”。
+### Meaning for Developers and Enterprises
 
-A2A提供了这一演进所需的标准底座。另一方面，企业对于数据主权和系统掌控的要求越来越高，他们希望能自由选购最合适的AI模块，而非被锁定在单一厂商生态中。A2A通过开放互通满足了这种去中心化、多样化需求，符合产业开放合作的大方向。
+From a developer's perspective, the advent of A2A greatly simplifies the development of multi-agent applications. Previously, achieving interactions between two AI systems using different frameworks required developers to master both interfaces and write adaptation layers; now, as long as both sides implement the A2A interface, they can directly call each other.
 
-## 相关资料：论文、博客、演示与代码库
+This reduces the operational costs and technical risks of deploying AI agents in enterprises, encouraging more traditional IT departments to attempt introducing AI agent collaboration to improve business processes.
 
-### 官方发布与技术博客
+### Industry Trend Outlook
 
-Google 团队在发布A2A协议的同时提供了详尽的官方说明和博客文章。其中最主要的是2025年4月9日发表于 *Google Developers Blog* 的《Announcing the Agent2Agent Protocol (A2A)》一文。
+The birth of the A2A protocol aligns with the trend of AI industry moving towards more autonomous and collaborative development. On one hand, the enhanced capabilities of large language models have spawned many applications for autonomous agents, and singular intelligence is gradually unable to meet complex business demands, pushing the architecture from "single agent + tool" to "multi-agent collaboration."
 
-### 技术文档与规范
+A2A provides the foundational standard necessary for this evolution. On the other hand, enterprises are increasingly demanding data sovereignty and system control—they wish to freely purchase the most suitable AI modules rather than being locked into a single vendor ecosystem. A2A, by allowing open interconnection, meets this decentralized and diversified demand, aligning with the industry's broad trend of open cooperation.
 
-A2A协议的完整技术规范已经开源发布在GitHub仓库上。该仓库包含协议的JSON接口定义、示例代码和文档。
+## Related Materials: Papers, Blogs, Demos, and Code Repositories
 
-### 开源代码库与SDK
+### Official Releases and Technical Blogs
 
-在GitHub的A2A仓库中，除了规范文档，还提供了多种语言的示例实现和开发工具包。开发者可以自由试用、参考并贡献改进。
+Upon releasing the A2A protocol, the Google team provided comprehensive official documentation and blog posts. The most significant one is *"Announcing the Agent2Agent Protocol (A2A)"* published on the Google Developers Blog on April 9, 2025.
 
-### 演示与视频资料
+### Technical Documentation and Specifications
 
-为了方便理解A2A的实际效果，Google官方提供了一些演示案例。例如，在发布会上展示了跨平台代理协作的情景。
+The complete technical specifications of the A2A protocol have been open-sourced and released on a GitHub repository, which includes the protocol's JSON interface definitions, example codes, and documentation.
 
-### 社区讨论与分析文章
+### Open Source Code Repositories and SDKs
 
-A2A发布后引起了AI技术社区的广泛讨论。业界分析人士在博客和媒体上发表了许多见解，这些资料有助于从不同角度理解A2A协议的意义、应用前景和可能的挑战。
+Besides specification documentation, the A2A GitHub repository contains sample implementations and development toolkits in multiple programming languages. Developers are welcome to test, reference, and contribute improvements.
 
-### 是否有学术论文
+### Demos and Video Materials
 
-截至目前（2025年4月），A2A协议主要以工业界发布为主，并无专门的学术论文公布其细节。不过，其理念契合多智能体系统和分布式AI的研究方向。
+To facilitate understanding of A2A's actual effects, Google provides several demo cases. For instance, scenarios demonstrating cross-platform agent collaboration were presented at the launch.
 
-## 总结
+### Community Discussions and Analytical Articles
 
-Agent2Agent (A2A) 协议作为Google携手业界推出的开放标准，开创了AI代理直接对话协作的新时代。其清晰的技术架构和面向企业的设计填补了多智能体系统缺乏通用通信规范的空白。
+The release of A2A has triggered extensive discussions in the AI technical community. Many industry analysts have published insights in blogs and media, providing different perspectives on the significance, application prospects, and potential challenges of the A2A protocol.
 
-A2A的出现将AI代理从孤岛走向网络：不同能力的智能体可以像互联网服务那样彼此发现、通信和协调，在更大范围内实现自治智能。对于企业，它带来了跨应用AI自动化的新范式，预示着更高的效率和创新空间；对于开发者，它提供了标准工具和生态，大幅降低了多代理开发的门槛。
+### Are there any Academic Papers?
 
-### 参考文献
+As of now (April 2025), the A2A protocol is mainly published industrially with no dedicated academic papers detailing its features. However, its concept aligns with research directions in multi-agent systems and distributed AI.
 
-1. [Rao Surapaneni 等, *Announcing the Agent2Agent Protocol (A2A)*](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/#:~:text=Today%2C%20we%E2%80%99re%20launching%20a%20new%2C,be%20able%20to%20work%20across)
+## Conclusion
+
+The Agent2Agent (A2A) protocol, as an open standard launched by Google in collaboration with industry players, heralds an era of direct dialogue and cooperation between AI agents. Its clear technical framework and enterprise-focused design fill the gap of lacking a universal communication standard in multi-agent systems.
+
+A2A transitions AI agents from isolation to networks: agents with different capabilities can discover, communicate, and coordinate with each other like internet services, achieving autonomous intelligence on a broader scale. For enterprises, it introduces a new paradigm of cross-application AI automation, heralding increased efficiency and innovative possibilities; for developers, it provides standard tools and an ecosystem, significantly lowering the barrier for multi-agent development.
+
+### References
+
+1. [Rao Surapaneni et al., *Announcing the Agent2Agent Protocol (A2A)*](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/#:~:text=Today%2C%20we%E2%80%99re%20launching%20a%20new%2C,be%20able%20to%20work%20across)
 2. [Kevin Ichhpurani, *Building the industry’s best agentic AI ecosystem with partners*](https://cloud.google.com/blog/topics/partners/best-agentic-ecosystem-helping-partners-build-ai-agents-next25#:~:text=,more%20in%20our%20technical%20blog)
-3. [Google 开源项目, *Agent2Agent Protocol – README*](https://github.com/google/A2A)
+3. [Google Open Source Project, *Agent2Agent Protocol – README*](https://github.com/google/A2A)
 4. [Chris McKay, *Google just Launched Agent2Agent...* (Maginative, Apr 2025)](https://www.maginative.com/article/google-just-launched-agent2agent-an-open-protocol-for-ai-agents-to-work-directly-with-each-other/#:~:text=,time%20updates%2C%20and%20multimodal%20data)
-5. [Ofweek维科网, *谷歌发布新Agent协议A2A...* (新浪财经转载)](https://finance.sina.com.cn/stock/relnews/us/2025-04-10/doc-inessiqx9134714.shtml#:~:text=Image%3A%20%E5%9B%BE%E6%BA%90%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%BA%90%EF%BC%9A%E7%BD%91%E7%BB%9C)
-6. [cnBeta资讯, *Google推出Agent2Agent协议 跨平台连接AI代理*](https://www.cnbeta.com.tw/articles/tech/1491788.htm#:~:text=A2A%20%E5%8D%8F%E8%AE%AE%E5%9F%BA%E4%BA%8E%E8%83%BD%E5%8A%9B%E5%8F%91%E7%8E%B0%E3%80%81%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E3%80%81%E5%8D%8F%E4%BD%9C%E5%92%8C%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E5%8D%8F%E5%95%86%E7%AD%89%E5%85%B3%E9%94%AE%E5%8E%9F%E5%88%99%E3%80%82%E4%BE%8B%E5%A6%82%EF%BC%8C%E4%BB%A3%E7%90%86%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%20JSON%20%E6%A0%BC%E5%BC%8F%E7%9A%84%E2%80%9C%E4%BB%A3%E7%90%86%E5%8D%A1%E2%80%9D%E5%8F%91%E5%B8%83%E5%85%B6%E8%83%BD%E5%8A%9B%EF%BC%8C%E4%BB%8E%E8%80%8C%E5%85%81%E8%AE%B8%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%90%86%E8%AF%86%E5%88%AB%E6%9C%80%E9%80%82%E5%90%88%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%90%86%E3%80%82%E8%AF%A5%E5%8D%8F%E8%AE%AE%E8%BF%98%E6%9C%89%E5%8A%A9%E4%BA%8E%E4%BB%BB%E5%8A%A1%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%90%86%E4%B9%8B%E9%97%B4%E7%9A%84%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E3%80%82A2A%20%E5%8D%8F%E8%AE%AE%E5%9F%BA%E4%BA%8E,HTTP%20%E5%92%8C%20JSON%20%E7%AD%89%E6%88%90%E7%86%9F%E6%A0%87%E5%87%86%E6%9E%84%E5%BB%BA%EF%BC%8C%E5%9C%A8%E7%A1%AE%E4%BF%9D%E4%B8%8E%E7%8E%B0%E6%9C%89%E7%B3%BB%E7%BB%9F%E5%85%BC%E5%AE%B9%E7%9A%84%E5%90%8C%E6%97%B6%EF%BC%8C%E4%BC%98%E5%85%88%E8%80%83%E8%99%91%E5%AE%89%E5%85%A8%E6%80%A7%E3%80%82)
+5. [Ofweek VicoNet, *Google Releases New Agent Protocol A2A...* (Reposted from Sina Finance)](https://finance.sina.com.cn/stock/relnews/us/2025-04-10/doc-inessiqx9134714.shtml#:~:text=Image%3A%20%E5%9B%BE%E6%BA%90%EF%BC%9A%E7%BD%91%E7%BB%9C%E5%9B%BE%E6%BA%90%EF%BC%9A%E7%BD%91%E7%BB%9C)
+6. [cnBeta News, *Google Launches Agent2Agent Protocol for Cross-Platform AI Agent Connectivity*](https://www.cnbeta.com.tw/articles/tech/1491788.htm#:~:text=A2A%20%E5%8D%8F%E8%AE%AE%E5%9F%BA%E4%BA%8E%E8%83%BD%E5%8A%9B%E5%8F%91%E7%8E%B0%E3%80%81%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E3%80%81%E5%8D%8F%E4%BD%9C%E5%92%8C%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C%E5%8D%8F%E5%95%86%E7%AD%89%E5%85%B3%E9%94%AE%E5%8E%9F%E5%88%99%E3%80%82%E4%BE%8B%E5%A6%82%EF%BC%8C%E4%BB%A3%E7%90%86%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%20JSON%20%E6%A0%BC%E5%BC%8F%E7%9A%84%E2%80%9C%E4%BB%A3%E7%90%86%E5%8D%A1%E2%80%9D%E5%8F%91%E5%B8%83%E5%85%B6%E8%83%BD%E5%8A%9B%EF%BC%8C%E4%BB%8E%E8%80%8C%E5%85%81%E8%AE%B8%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%90%86%E8%AF%86%E5%88%AB%E6%9C%80%E9%80%82%E5%90%88%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%90%86%E3%80%82%E8%AF%A5%E5%8D%8F%E8%AE%AE%E8%BF%98%E6%9C%89%E5%8A%A9%E4%BA%8E%E4%BB%BB%E5%8A%A1%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%AE%A1%E7%90%86%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%90%86%E4%B9%8B%E9%97%B4%E7%9A%84%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E3%80%82A2A%20%E5%8D%8F%E8%AE%AE%E5%9F%BA%E4%BA%8E,HTTP%20%E5%92%8C%20JSON%20%E7%AD%89%E6%88%90%E7%86%9F%E6%A0%87%E5%87%86%E6%9E%84%E5%BB%BA%EF%BC%8C%E5%9C%A8%E7%A1%AE%E4%BF%9D%E4%B8%8E%E7%8E%B0%E6%9C%89%E7%B3%BB%E7%BB%9F%E5%85%BC%E5%AE%B9%E7%9A%84%E5%90%8C%E6%97%B6%EF%BC%8C%E4%BC%98%E5%85%88%E8%80%83%E8%99%91%E5%AE%89%E5%85%A8%E6%80%A7%E3%80%82)

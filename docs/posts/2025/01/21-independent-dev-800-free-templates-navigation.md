@@ -1,122 +1,122 @@
 ---
-title: 独立开发做了个800+免费模板导航
+title: I independently developed a directory with over 800 free templates.
 date: 2025-01-21
 tags: 
-  - 独立开发
-  - 模板
-  - 导航
+  - Independent Development
+  - Templates
+  - Navigation
   - Launch
   - ProductHunt
 ---
-# 独立开发做了个800+免费模板导航
+# I independently developed a directory with over 800 free templates.
 
-> ✨文章摘要（AI生成）
-
-<!-- DESC SEP -->
-
-笔者很高兴向大家介绍我开发的网站 [template0.com](https://template0.com/) —— 一个专注于收集高质量免费模板的目录网站。作为创始人，我深信成功往往始于一个好的模板，而不是从零开始。这也是网站命名的由来：template（模板）在0之前，同时0也象征着所有模板都是免费（$0）的。
-
-这个项目主要解决了三个痛点：
-- 优质免费模板难以被发现和获得足够曝光
-- 用户难以快速找到符合需求的免费模板
-- 缺乏一个探索和提升网站审美的平台
-
-网站提供了丰富的功能，包括：
-- 分类筛选系统
-- 精选合集展示
-- 博客内容输出
-- 免费模板提交
-- 个人收藏功能
-
-目前网站月活跃用户达到4k，页面浏览量14k，并保持稳定增长。我们通过赞助维持运营，确保所有内容对用户永久免费。欢迎各位来探索、收藏心仪的模板，也欢迎创作者提交自己的作品！
+> ✨Article Summary (AI Generated)
 
 <!-- DESC SEP -->
 
-> 原文链接：[template0.com](https://template0.com/blog/launch-v1)
+I am pleased to introduce the website I developed, [template0.com](https://template0.com/), a directory site dedicated to collecting high-quality free templates. As the founder, I firmly believe that success often begins with a good template rather than starting from scratch. This belief is reflected in the site's name: "template" comes before "0," and the "0" symbolizes that all templates are free ($0).
 
-目前正在[ProductHunt](https://www.producthunt.com/posts/template0)上进行启动，如果觉得这个站点对你有帮助，希望能得到你的正向反馈（Upvote & Comment）
-## 站点介绍
+This project addresses three main pain points:
+- High-quality free templates are difficult to discover and lack sufficient exposure.
+- Users find it challenging to quickly locate free templates that meet their needs.
+- There is a lack of a platform for exploring and enhancing website aesthetics.
 
-[template0.com](https://template0.com/) 是一个目录网站，旨在收集互联网上可用的高质量免费模板，包括登录页面、博客、作品集、电子商务和管理仪表板等。
+The website offers a variety of features, including:
+- A categorized filtering system
+- Curated collection displays
+- Blog content output
+- Free template submissions
+- Personal collection functionality
 
-为什么叫做 template0？它有两个含义：
+Currently, the site has 4,000 monthly active users and 14,000 page views, with steady growth. We maintain operations through sponsorships, ensuring that all content remains free for users. We welcome everyone to explore and collect their favorite templates, and creators are encouraged to submit their own works!
 
-1. 我坚信成功始于一个模板，而不是从零开始。“模板”在“0”之前，代表了这个意思。
-2. 您也可以将 0 视为 $0，这意味着这里的所有模板都是免费的。
+<!-- DESC SEP -->
 
-为什么要创建这样一个网站？简单来说，有三个目的：
+> Original link: [template0.com](https://template0.com/blog/launch-v1)
 
-1. 高质量的免费模板常常被遗忘在某个角落。这是一个免费模板的展示网站。
+We are currently launching on [ProductHunt](https://www.producthunt.com/posts/template0). If you find this site helpful, we would appreciate your positive feedback (Upvote & Comment).
+## Site Introduction
 
-- 在谷歌搜索关键词时，免费模板常常被付费模板结果所掩盖。
-- 由于模板是免费的，许多创作者在推广上投入的精力不多，这使得优质模板难以获得曝光。
-- 许多由人们创建的免费模板没有特定的展示位置。Template0 就是这样一个目录网站，展示创作者的作品，并为探索者提供一个发现它们的平台。
+[template0.com](https://template0.com/) is a directory website aimed at collecting high-quality free templates available on the Internet, including landing pages, blogs, portfolios, ecommerce, and admin dashboards, among others.
 
-2. 想要的免费模板很难找到。
+Why is it called template0? It has two meanings:
 
-- 许多模板缺乏关于目的、技术栈或预览图像的详细信息，这使得寻找模板的人很难找到他们所需的内容。
-- 许多免费模板需要注册才能下载。这些已被过滤掉。
-- 所有模板都经过基本筛选，以确保外观良好，并包含实时演示。
+1. I firmly believe that success begins with a template, not from scratch. The "template" comes before "0", representing this meaning.
+2. You can also consider 0 as $0, meaning all the templates here are free of charge.
 
-3. 审美感源于探索。
+Why create such a website? To put it simply, there are three purposes:
 
-- 这是创建这个网站的另一个原因：鼓励探索和体验他人的网站，从而增强个人的审美感。
-- 所有网站内容都是手动收集或用户提交的，而不是通过网络爬虫大量抓取的。
-- 我将不断关注行业趋势，收集我遇到的高质量免费模板。网站的内容会不断更新。
+1. High-quality free templates are often forgotten in some corner. This is a showcase site for free templates.
 
-## 预览及功能简介
+- When searching keywords on Google, free templates are often overshadowed by paid template results.
+- Because the templates are free, many creators don't invest much effort in promotion, making it difficult for quality templates to gain visibility.
+- Many free templates created by people do not have a specific place for display. Template0 is such a directory website that showcases creators' works and provides a platform for explorers to discover them.
 
-### 首页
+2. Desired free templates are hard to find.
 
-首页包含英雄模块、搜索快捷入口、赞助商模块、最近发布模块、精选模块、博客发布模块、邮件订阅模块以及页脚。
+- Many templates lack detailed information on purpose, tech stack, or preview images, making it difficult for those seeking templates to find what they need.
+- Many free templates require registration to download. These have been filtered out.
+- All templates go through a basic screening to ensure good appearance and include a live demo.
 
-预览：
+3. Aesthetic sense stems from exploration.
+
+- This is another reason for creating this site: to encourage exploration and experiencing others' websites, thus enhancing one's aesthetic sense.
+- All website content is manually collected or user-submitted, rather than being scraped in large quantities by web crawlers.
+- I will continually keep an eye on industry trends, collecting high-quality free templates as I encounter them. The site's content is continuously updated.
+
+## Preview and Feature Overview
+
+### Homepage
+
+The homepage includes a hero section, quick search access, sponsor section, latest releases section, featured section, blog post section, email subscription section, and footer.
+
+Preview：
 
 ![](https://oss.justin3go.com/blogs/home1.png)
 
 ![](https://oss.justin3go.com/blogs/home2.png)
 
 ![](https://oss.justin3go.com/blogs/home3.png)
-### 分类筛选页
+### Category Filter Page
 
-这里提供了更多的筛选条件，帮助大家更快捷地找到自己心仪地免费模板，如用途、技术栈、是否精选、预览图、发布时间及名字字母排序等。
+Here, more filtering options are provided to help everyone quickly find their desired free templates, such as by purpose, tech stack, whether it's featured, preview images, release date, and alphabetical order of names.
 
-以及在顶部有一个赞助商轮播模块，底部也有和首页一样的邮件订阅和页脚模块。
+There is also a sponsor carousel module at the top, and at the bottom, there are email subscription and footer modules similar to those on the homepage.
 
-预览：
+Preview：
 
 ![](https://oss.justin3go.com/blogs/category.png)
-### 合集
+### Collection Page
 
-为了支持大家从不同维度探索发现别人的免费模板，Template0提供了精选合集。
+To support everyone in exploring and discovering others' free templates from different dimensions, Template0 offers curated collections.
 
-预览：
+Preview：
 
 ![](https://oss.justin3go.com/blogs/collection.png)
 
-### Blog页
+### Blog Page
 
-除此之外，为了后续持续输出内容，提高搜索引擎的曝光，Template0还包含了一个Blog页，当然，目前博客输出较少，后续会慢慢输出的：
+In addition, to continuously produce content and increase search engine exposure, Template0 also includes a Blog page. Of course, there is currently limited blog content, but more will be gradually added in the future.
 
 ![](https://oss.justin3go.com/blogs/blog.png)
 
-### 价格赞助页
+### Price Page
 
-首先，声明一下，这个网站的所有内容都是免费的，无论是模板还是提交你自己的免费模板；网站维护仅依靠赞助：
+First, let me state that all the content on this website is free, whether it's templates or submitting your own free templates. The website is maintained solely through sponsorship:
 
-- 为避免过多打扰用户，赞助位仅有八位
-- 通过赞助金额（最高$99）排序，再通过最早赞助时间进行排序，取前8位进行展示
+- To avoid excessive disturbance to users, there are only eight sponsorship slots.
+- Sponsors are ranked by the amount of sponsorship (up to $99), and then by the earliest sponsorship time. The top 8 are displayed.
 
-预览：
+Preview：
 
 ![](https://oss.justin3go.com/blogs/pricing.png)
-### 提交页
+### Submit Page
 
-在这里，你可以免费提交你的免费模板，以获得免费的流量曝光，目前上个月该站点的流量为 uv：4k，pv：14k，目前正在持续增长中！
+Here, you can submit your free templates for free to gain exposure and traffic. Last month, the site's traffic was 4k UV and 14k PV, and it is continuously growing!
 
-template0.com 只是一个目录网站，不会托管任何预览内容或源代码。链接将指向您自己的网站，为您提供流量和 SEO 收益。
+template0.com is just a directory site and will not host any preview content or source code. Links will lead to your own website, providing traffic and SEO benefits to you.
 
-template0.com 仅接受可以免费使用、带有实时演示并且外观良好的模板。如果您在 template0.com 上有免费模板，可以复制下面的徽章并将其放置在您的模板演示或库中的任何位置。
+template0.com only accepts templates that are free to use, come with a live demo, and have a good appearance. If you have free templates in template0.com, you can copy the badge below and place it anywhere in your template demo or repository.
 
 ```html
 <a href="https://template0.com/item/XXX" target="_blank">
@@ -124,30 +124,30 @@ template0.com 仅接受可以免费使用、带有实时演示并且外观良好
 </a>
 ```
 
-关于精选模板，精选模板没有商业内容，完全基于站长的个人偏好，重点关注以下几点：
+About featured template Featured template has no commercial content and is purely based on personal preference of the site owner, with a focus on the following points:
 
-1. 模板代码是否结构良好、文档齐全且易于修改。
-2. 外观是否干净、现代且流畅。
-3. 模板的整体外观是否是相对独特的设计，例如终端风格。
+1. Whether the template code is well-structured, well-documented, and easy to modify.
+2. Whether the appearance is clean, modern, and sleek.
+3. Whether the overall appearance of the template is a relatively unique design, such as a terminal style.
 
-通常，满足上述这些标准将导致被推荐。
+Generally, meeting any of these criteria will lead to being featured.
 
-提交页预览：
+Preview：
 
 ![](https://oss.justin3go.com/blogs/submit%201.png)
 
-提交之后会等待审核，一般三天之内我会审核完成并发布，以避免一些非免费内容和其他不恰当的内容出现在站点中，比如之前就收到过NSFW的提交。
+After submission, it will undergo a review process, which I usually complete and publish within three days. This is to prevent non-free content and other inappropriate content from appearing on the site, as we have previously received NSFW submissions.
 
-提交之后，你可以在Dashboard页中看到自己提交的项目并进行管理。
-### 收藏功能
+Meanwhile, you can view and manage your submitted projects on the Dashboard page.
+### Favorites
 
-你可以在这里肆意探索你喜欢的模板，在详情页点击收藏，在Dashboard页找到你私有的收藏列表，方便后续要使用时，快速找到！
+You can freely explore your favorite templates here, click to save them on the details page, and find your private collection list on the Dashboard page, making it easy to quickly locate them for future use!
 
 ![](https://oss.justin3go.com/blogs/favorites.png)
-## 最后
+## Conclusion
 
-欢迎大家来这里探索自己想要的免费模板，或者仅仅是想要看看别人做的网站是什么样的，这里也是一个不错的选择~
+Welcome everyone to explore the free templates you desire here, or if you're just curious about what websites others have created, this is also a great place to check out~
 
-也欢迎大家提交自己的免费模板到站点中，提交都是免费的！
+You're also welcome to submit your own free templates to the site, and submissions are free of charge!
 
-如果你有任何建议，欢迎通过任何方式联系我（站点页脚下的联系方式）
+If you have any suggestions, feel free to contact me through any means (contact information is available in the footer of the site).

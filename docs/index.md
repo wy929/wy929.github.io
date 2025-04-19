@@ -1,5 +1,4 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: doc
 editLink: false
 lastUpdated: false
@@ -21,6 +20,7 @@ isNoBackBtn: true
   </h2>
   <t-tag
     v-for="tag in post.tags"
+    :key="tag"
     class="mr-2"
     variant="outline"
     shape="round"
@@ -31,126 +31,109 @@ isNoBackBtn: true
 
 <!-- <Pagination /> -->
 <div class="pagination-container">
-  <t-pagination
-    v-model="current"
-    v-model:pageSize="pageSize"
-    :total="total"
-    size="small"
-    :showPageSize="false"
-    :showPageNumber="!isMobile()"
-    :showJumper="isMobile()"
-    @current-change="onCurrentChange"
-  />
+  <t-config-provider :global-config="enConfig">
+    <t-pagination
+      v-model="current"
+      v-model:pageSize="pageSize"
+      :total="total"
+      size="small"
+      :showPageSize="false"
+      :showPageNumber="!isMobile()"
+      :showJumper="isMobile()"
+      @current-change="onCurrentChange"
+    />
+  </t-config-provider>
 </div>
 
 <script lang="ts" setup>
-import { ref, computed } from "vue";
-import { useRoute, useRouter } from "vitepress";
-// 非 Vue 组件需要手动引入
-import {
-	MessagePlugin,
-	PaginationProps,
-	Pagination as TPagination,
-  Tag as TTag,
-} from "tdesign-vue-next";
+import { ref, computed } from 'vue';
+import { useRoute, useRouter } from 'vitepress';
 
-import { data as posts } from "./.vitepress/theme/posts.data.mts";
-import { isMobile } from "./.vitepress/theme/utils/mobile.ts";
+// 引入英文国际化包
+import enConfig from 'tdesign-vue-next/es/locale/en_US';
+
+// 你自己的数据和工具
+import { data as posts } from './.vitepress/theme/posts.data.mts';
+import { isMobile } from './.vitepress/theme/utils/mobile.ts';
 
 const route = useRoute();
-
 const getPage = () => {
-  const search = route.query
-  const searchParams = new URLSearchParams(search);
+  const search = route.query;
+  const searchParams = new URLSearchParams(search as any);
+  return Number(searchParams.get('page') || '1');
+};
 
-  return Number(searchParams.get("page") || "1");
-}
-
-const current = ref(getPage())
+const current = ref(getPage());
 const pageSize = ref(10);
 const total = ref(posts.length);
 
-// 在首页有page参数时，从NAV跳转到当前页，清空了参数，但没有刷新页面内容的问题，需要手动更新current
 const router = useRouter();
-router.onAfterRouteChange = (to) => {
+router.onAfterRouteChange = () => {
   current.value = getPage();
-}
+};
 
 const curPosts = computed(() => {
-	return posts.slice(
-		(current.value - 1) * pageSize.value,
-		current.value * pageSize.value
-	);
+  return posts.slice(
+    (current.value - 1) * pageSize.value,
+    current.value * pageSize.value
+  );
 });
 
-const onCurrentChange: PaginationProps["onCurrentChange"] = (
-	index,
-	pageInfo
-) => {
-	// MessagePlugin.success(`转到第${index}页`);
-
-	const url = new URL(window.location as any);
-	url.searchParams.set("page", index.toString());
-	window.history.replaceState({}, "", url);
-
-	window.scrollTo({
-		top: 0,
-	});
+const onCurrentChange = (page: number) => {
+  const url = new URL(window.location as any);
+  url.searchParams.set('page', page.toString());
+  window.history.replaceState({}, '', url);
+  window.scrollTo({ top: 0 });
 };
 </script>
+
 <style lang="scss" scoped>
 /* 去掉.vp-doc li + li 的 margin-top */
 .pagination-container {
-	margin-top: 60px;
-
-	:deep(li) {
-		margin-top: 0px;
-	}
+  margin-top: 60px;
+  :deep(li) {
+    margin-top: 0;
+  }
 }
 
 .mr-2 {
-	margin-right: 2px;
+  margin-right: 2px;
 }
 
 .post-title {
-	margin-bottom: 6px;
-	margin-top: 60px;
-	border-top: 0px;
-	position: relative;
-	top: 0;
-	left: 0;
+  margin-bottom: 6px;
+  margin-top: 60px;
+  border-top: 0;
+  position: relative;
 
-	> a {
-		font-weight: 400;
-	}
+  > a {
+    font-weight: 400;
+  }
 
-	.post-date {
-		position: absolute;
-		top: -12px;
-		left: -10px;
+  .post-date {
+    position: absolute;
+    top: -12px;
+    left: -10px;
+    z-index: -1;
+    opacity: .16;
+    font-size: 76px;
+    font-weight: 900;
+  }
 
-		z-index: -1;
-		opacity: .16;
-		font-size:76px;
-		font-weight: 900;
-	}
+  @media (max-width: 425px) {
+    .post-date {
+      font-size: 60px !important;
+    }
+  }
 
-	@media (max-width: 425px) {
-		.post-date {
-			font-size: 60px !important;
-		}
-	}
-	
-	&:first-child {
-		margin-top: 20px;
-	}
+  &:first-child {
+    margin-top: 20px;
+  }
 }
 
 .hollow-text {
-  
-  /* 设置文本颜色为透明 */
+  /* 设置文本颜色为透明，只保留描边 */
   color: var(--vp-c-bg);
-  
-	-webkit-text-stroke: 1px var(--vp-c-text-1);
+  -webkit-text-stroke: 1px var(--vp-c-text-1);
 }
 </style>
