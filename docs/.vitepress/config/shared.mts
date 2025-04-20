@@ -6,7 +6,8 @@ export default defineConfig({
           "link",
           {
             rel: "icon",
-            href: "../../public/favicon-circle.ico",
+            // href: "../../public/favicon-circle.ico",
+            href: "https://github.com/wy929/wy929.github.io/blob/main/docs/public/favicon-circle.ico",
           },
         ],
     ],
