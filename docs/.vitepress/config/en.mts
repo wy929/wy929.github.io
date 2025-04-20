@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import path from 'path'
+import { readNotesDir } from '../theme/utils/readNotes'
 
 export default defineConfig({
   // —— 站点元数据 ——
@@ -11,42 +13,17 @@ export default defineConfig({
     nav: [
       { text: 'Home',  link: '/' },
       { text: 'Posts', link: '/posts/' },
-      { text: 'Notes', link: '/notes/' }
+      { text: 'Notes', link: '/notes/' },
+      { text: 'Archive', link: '/archive' },
     ],
 
     sidebar: {
-      // Notes
-      '/notes/': [
-        {
-          text: 'Notes Overview',
-          items: [{ text: 'Notes Overview', link: '/notes/' }]
-        },
-        {
-          text: 'Japanese',
-          items: [
-            { text: 'Exam Overview', link: '/notes/japanese/exam/' },
-            { text: '01‑first note', link: '/notes/japanese/exam/01-first%20note' }
-          ]
-        },
-        {
-          text: 'PyTorch',
-          items: [
-            { text: 'Dataset Overview', link: '/notes/pytorch/dataset/' },
-            { text: '01‑first note', link: '/notes/pytorch/dataset/01-first%20note' }
-          ]
-        }
-      ],
-
-      // Posts
-      '/posts/': [
-        {
-          text: 'Posts Overview',
-          items: [
-            { text: '2025‑04 First Post',  link: '/posts/2025/04/01-first%20post' },
-            { text: '2025‑04 Second Post', link: '/posts/2025/04/02-second%20post' }
-          ]
-        }
-      ]
+      '/notes/': readNotesDir(
+        // 指向你的 notes 源文件夹
+        path.resolve(__dirname, '../../notes'),
+        // 链接前缀，跟路由对应
+        '/notes'
+      ),
     },
 
     socialLinks: [

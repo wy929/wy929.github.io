@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+
+    "test:readnotes": "node tests/run-readNotes-test.cjs"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,8 @@
     "feed": "^4.2.2",
     "markdown-it-mathjax3": "^4.3.2",
     "sass": "^1.77.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
     "unplugin-auto-import": "^0.17.6",
     "unplugin-vue-components": "^0.27.0",
     "vitepress": "2.0.0-alpha.2"
