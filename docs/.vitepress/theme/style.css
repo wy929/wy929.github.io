@@ -97,16 +97,14 @@
   --vp-font-family-base:
     /* 西文首选 Source Sans Pro */
     'Source Sans Pro',
-    /* 系统无衬线备选 */
-    /* system-ui,  */
-	/* -apple-system, 
-	Roboto, 
-	'Helvetica Neue', */
-    /* Arial,  */
-	/* 'Noto Sans',  */
-	/* sans-serif, */
     /* 中日韩回退 Sarasa */
-    'SarasaSC', 'SarasaJ';
+    'SarasaSC', 'SarasaJ',
+	system-ui, 
+	-apple-system, 
+	Roboto, 
+	Arial, 
+	'Noto Sans', 
+	sans-serif;
   --vp-font-family-mono: 'FiraCode';
 }
 
