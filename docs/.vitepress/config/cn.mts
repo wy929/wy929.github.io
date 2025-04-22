@@ -31,6 +31,12 @@ export default defineConfig({
       next: '下一篇'
     },
 
+    outlineTitle: "当前页面",
+    lastUpdatedText: "最近更新时间",
+    returnToTopLabel: "回到顶部",
+    sidebarMenuLabel: "目录",
+    darkModeSwitchLabel: "深色模式",
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]

@@ -1,7 +1,12 @@
 import { defineConfig, type SiteConfig } from 'vitepress'
 
 export default defineConfig({
-    head: [    
+  lastUpdated: true,
+  cleanUrls: true,
+  ignoreDeadLinks: true,
+  head: [    
+        ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+        ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
         [
           "link",
           {
@@ -45,6 +50,10 @@ export default defineConfig({
           },
         ],
     ],
+
+    markdown: {
+      math: true
+    },
 
     themeConfig: {
         // activate local search
