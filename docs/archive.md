@@ -67,13 +67,14 @@ const postGroups = computed(() => {
 	left: 0;
 
 	.post-year {
+    font-family: 'Noto Sans';
 		position: absolute;
 		top: -6px;
 		left: -10px;
 
 		z-index: -1;
 		opacity: .16;
-		font-size: 86px;
+		font-size: 76px;
 		font-weight: 900;
 	}
 }

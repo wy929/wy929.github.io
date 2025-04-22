@@ -5,7 +5,7 @@ import path from 'path'
 export default defineConfig({
   // —— 站点元数据 ——
   lang: 'zh-CN',
-  title: 'vitepress‑blog',
+  title: 'vitepress-blog',
   description: '一个 VitePress 站点',
 
   // —— 主题配置 ——

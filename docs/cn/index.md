@@ -101,6 +101,13 @@ const onCurrentChange: PaginationProps["onCurrentChange"] = (
 };
 </script>
 <style lang="scss" scoped>
+.post-title {
+  /* 这里替换成你想要的字体名称，务必已在全局引入 */
+  /* font-family: 'DM Sans', sans-serif; */
+  /* font-family: 'Niconne'; */
+  /* font-weight: 600; */
+}
+
 /* 去掉.vp-doc li + li 的 margin-top */
 .pagination-container {
 	margin-top: 60px;
@@ -116,7 +123,7 @@ const onCurrentChange: PaginationProps["onCurrentChange"] = (
 
 .post-title {
 	margin-bottom: 6px;
-  margin-top: 60px;
+  	margin-top: 60px;
 	border-top: 0px;
 	position: relative;
 	top: 0;
@@ -127,6 +134,8 @@ const onCurrentChange: PaginationProps["onCurrentChange"] = (
 	}
 
 	.post-date {
+		/* font-family: 'DM Sans', sans-serif; */
+  		/* font-family: 'Niconne'; */
 		position: absolute;
 		top: -12px;
 		left: -10px;

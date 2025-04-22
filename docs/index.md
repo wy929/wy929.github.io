@@ -89,6 +89,11 @@ const onCurrentChange = (page: number) => {
 
 <style lang="scss" scoped>
 /* 去掉.vp-doc li + li 的 margin-top */
+.post-title {
+  /* 这里替换成你想要的字体名称，务必已在全局引入 */
+  /* font-family: 'DM Sans', sans-serif; */
+  /* font-weight: 600; */
+}
 .pagination-container {
   margin-top: 60px;
   :deep(li) {
