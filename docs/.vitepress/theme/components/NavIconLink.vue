@@ -4,7 +4,7 @@ import { useRoute } from 'vitepress'
 import { isMobile as checkUA } from '../utils/mobile'   // 按实际路径修改
 
 /* 图标保持原样 */
-import { PhHouseLine, PhNewspaper, PhNotebook, PhArchiveBox } from '@phosphor-icons/vue'
+import { PhHouseLine, PhNewspaper, PhNotebook, PhArchive } from '@phosphor-icons/vue'
 
 const props = defineProps<{
   to: string
@@ -34,7 +34,7 @@ const icons = {
   home: PhHouseLine,
   posts: PhNewspaper,
   notes: PhNotebook,
-  archive: PhArchiveBox
+  archive: PhArchive
 }
 </script>
 

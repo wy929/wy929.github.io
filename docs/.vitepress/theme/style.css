@@ -247,15 +247,15 @@ main > div > div > pre > code {
 }
 
 /* 1. 抽屉里的导航：竖排 + 行间距 */
-.VPNavBarScreenMenu .nav-link {
+/* .VPNavBarScreenMenu .nav-link {
 	display: flex;
 	align-items: center;
 	gap: .5rem;
 	padding: .75rem 0;
 	border-bottom: 1px solid var(--vp-c-divider);
-  }
+  } */
   
   /* 2. 最后一个不画下边线 */
-.VPNavBarScreenMenu .nav-link:last-child {
+/* .VPNavBarScreenMenu .nav-link:last-child {
 	border-bottom: none;
-}
+} */
