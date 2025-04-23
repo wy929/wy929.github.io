@@ -10,6 +10,9 @@ import Comment from "./components/Comment.vue";
 import ImageViewer from "./components/ImageViewer.vue"
 import GoBack from "./components/GoBack.vue";
 
+// import PhosphorIcons from '@phosphor-icons/vue'
+import NavIconLink from './components/NavIconLink.vue'
+
 export default {
 	...Theme,
 	Layout: () => {
@@ -27,6 +30,9 @@ export default {
 		app.component("Comment", Comment);
 		app.component("ImageViewer", ImageViewer);
 		app.component("GoBack", GoBack);
+		// 全量注册 phosphor-vue 里的组件
+		// app.use(PhosphorIcons)
+		app.component('NavIconLink', NavIconLink)
 	},
 };
 

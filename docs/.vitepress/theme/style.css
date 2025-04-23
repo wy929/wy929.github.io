@@ -228,3 +228,34 @@ main > div > div > pre > code {
 	/* scrollbar-color: rgba(0, 0, 0, 0.12) transparent; */
 	scrollbar-width: thin;
 }
+
+:root {
+	/* 全站统一控制，只改这一行即可 */
+	--my-nav-gap: 1.25rem;      /* 想要 20px→写 1.25rem，16px→1rem … */
+}
+
+/* 桌面端：导航栏 */
+.VPNavBarMenu {
+	gap: var(--my-nav-gap);     /* 现代浏览器一次搞定 */
+  }
+
+/* 兼容不支持 flex-gap 的旧浏览器（可选） */
+@supports not (gap: 1rem) {
+	.VPNavBarMenu > * + * {     /* 选中后续兄弟节点 */
+		margin-left: var(--my-nav-gap);
+	}
+}
+
+/* 1. 抽屉里的导航：竖排 + 行间距 */
+.VPNavBarScreenMenu .nav-link {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	padding: .75rem 0;
+	border-bottom: 1px solid var(--vp-c-divider);
+  }
+  
+  /* 2. 最后一个不画下边线 */
+.VPNavBarScreenMenu .nav-link:last-child {
+	border-bottom: none;
+}
