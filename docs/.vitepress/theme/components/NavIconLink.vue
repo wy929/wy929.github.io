@@ -1,51 +1,76 @@
 <script setup lang="ts">
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vitepress'
-import { computed } from 'vue'
-import {                    // 基础组件名
-  PhHouseLine,
-  PhNewspaper,              // Posts
-  PhNotebook,               // Notes
-  PhArchiveBox              // Archive
-} from '@phosphor-icons/vue'
+import { isMobile as checkUA } from '../utils/mobile'   // 按实际路径修改
+
+/* 图标保持原样 */
+import { PhHouseLine, PhNewspaper, PhNotebook, PhArchiveBox } from '@phosphor-icons/vue'
 
 const props = defineProps<{
   to: string
   label: string
   icon: 'home' | 'posts' | 'notes' | 'archive'
+  screenMenu?: boolean         // VitePress 注入
 }>()
 
-const icons = { home: PhHouseLine, posts: PhNewspaper, notes: PhNotebook, archive: PhArchiveBox }
-
-const route = useRoute()                     // 官方 API
-// const active = computed(() => route.path?.startsWith(props.to) || false)
+/* ---------- 活跃路由 ---------- */
+const route  = useRoute()
 const active = computed(() =>
-  props.to === '/'
-    ? route.path === '/'             // 只在首页高亮
-    : route.path.startsWith(props.to) // 其余栏目保持前缀匹配
+  props.to === '/' ? route.path === '/' : route.path.startsWith(props.to)
 )
 
+/* ---------- Mobile 监测：UA + resize ---------- */
+const uaMobile = ref(checkUA())       // 初始值
+function handleResize() { uaMobile.value = checkUA() }
+
+onMounted(() => window.addEventListener('resize', handleResize))
+onUnmounted(() => window.removeEventListener('resize', handleResize))
+
+/* ---------- 需要竖排？ ---------- */
+const isMobileView = computed(() => props.screenMenu || uaMobile.value)
+
+/* ---------- 图标表 ---------- */
+const icons = {
+  home: PhHouseLine,
+  posts: PhNewspaper,
+  notes: PhNotebook,
+  archive: PhArchiveBox
+}
 </script>
 
 <template>
-  <a :href="to" class="nav-link" :class="{ active }">
-    <component :is="icons[icon]" size="18" weight="duotone" style="margin-right:4px" />
+  <a
+    :href="to"
+    class="nav-link"
+    :class="{ active, mobile: isMobileView }"
+  >
+    <component :is="icons[icon]" size="18" weight="duotone" />
     {{ label }}
   </a>
 </template>
 
-<style scoped>
-.nav-link {
-  /* 让图标和文字排成一行 */
-  display: inline-flex;      /* 或 flex，都可以 */
-  align-items: center;       /* 垂直居中 */
-  gap: .1rem;               /* 图标与文字的水平间距 */
-  line-height: 1.2;          /* 防止 mobile 菜单里行高过大 */
-  white-space: nowrap;       /* 避免图标/文字被换行拆开 */
+<!-- ❗不要 scoped，方便全局覆盖 -->
+<style>
+/* ── 桌面横排 ───────────────────────────── */
+.nav-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.25rem;
+  line-height:1.2;
+  white-space:nowrap;
+  color:var(--vp-c-text-1);
+  transition:color .2s;
 }
+.nav-link.active{color:var(--vp-c-brand-1);}
+html.dark .nav-link{color:var(--vp-c-text-dark-1);}
 
-/* 高亮状态（沿用之前的变量即可） */
-.nav-link.active {
-  color: var(--vp-c-brand-1);
+/* ── 手机竖排（screenMenu 或 UA 判定） ── */
+.nav-link.mobile{
+  display:flex;
+  align-items:center;
+  width:100%;
+  padding:.75rem 1rem;
+  /* border-bottom:1px solid var(--vp-c-divider); */
 }
+.nav-link.mobile:last-child{border-bottom:none;}
 </style>
-
