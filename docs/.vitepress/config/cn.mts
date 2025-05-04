@@ -48,8 +48,8 @@ export default defineConfig({
     sidebarMenuLabel: "目录",
     darkModeSwitchLabel: "深色模式",
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+    // socialLinks: [
+    //   { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+    // ]
   }
 })

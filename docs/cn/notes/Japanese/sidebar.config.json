@@ -1,9 +1,10 @@
 {
     "title": "日语",
     "items": {
+      "Vocabulary": "词汇",
       "Grammar": "文法",
       "Listening": "听力",
-      "Reading": "阅读"
+      "Reading": "阅读",
+      "Exam": "试题"
     }
   }
-  
