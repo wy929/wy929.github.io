@@ -14,10 +14,24 @@ const props = defineProps<{
 }>()
 
 /* ---------- 活跃路由 ---------- */
-const route  = useRoute()
-const active = computed(() =>
-  props.to === '/' ? route.path === '/' : route.path.startsWith(props.to)
-)
+// const route  = useRoute()
+// const active = computed(() =>
+//   props.to === '/' ? route.path === '/' : route.path.startsWith(props.to)
+// )
+const route = useRoute()
+
+const active = computed(() => {
+  // 去掉收尾斜线便于比较
+  const to   = props.to.replace(/\/$/, '')
+  const path = route.path.replace(/\/$/, '')
+
+  // 判断是不是“根路径”链接：把左右两端 / 去掉后，只剩 0‑1 个片段
+  const isRoot = to.split('/').filter(Boolean).length <= 1
+
+  return isRoot ? path === to               // 只高亮真正的首页
+                : path.startsWith(to)       // 其余栏目保持前缀匹配
+})
+
 
 /* ---------- Mobile 监测：UA + resize ---------- */
 const uaMobile = ref(checkUA())       // 初始值
@@ -73,4 +87,8 @@ html.dark .nav-link{color:var(--vp-c-text-dark-1);}
   /* border-bottom:1px solid var(--vp-c-divider); */
 }
 .nav-link.mobile:last-child{border-bottom:none;}
+/* fix nav icon highlight in dark mode */
+html.dark .nav-link.active {
+  color: var(--vp-c-brand-1);
+}
 </style>

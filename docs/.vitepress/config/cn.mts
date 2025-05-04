@@ -10,11 +10,22 @@ export default defineConfig({
 
   // —— 主题配置 ——
   themeConfig: {
+    // nav: [
+    //   { text: '首页', link: '/cn/' },
+    //   { text: '文章', link: '/cn/posts/' },
+    //   { text: '笔记', link: '/cn/notes/' },
+    //   { text: '归档', link: '/cn/archive' }
+    // ],
     nav: [
-      { text: '首页', link: '/cn/' },
-      { text: '文章', link: '/cn/posts/' },
-      { text: '笔记', link: '/cn/notes/' },
-      { text: '归档', link: '/cn/archive' }
+      // Home 已在 logo 位置，用不到 text
+      { component: 'NavIconLink',
+        props: { to: '/cn/', label: '首页', icon: 'home' } },
+      { component: 'NavIconLink',
+        props: { to: '/cn/posts/', label: '文章',   icon: 'posts' } },
+      { component: 'NavIconLink',
+        props: { to: '/cn/notes/', label: '笔记',   icon: 'notes' } },
+      { component: 'NavIconLink',
+        props: { to: '/cn/archive', label: '归档', icon: 'archive' } }
     ],
 
     sidebar: {
