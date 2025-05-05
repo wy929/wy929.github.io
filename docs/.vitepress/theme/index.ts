@@ -12,6 +12,9 @@ import GoBack from "./components/GoBack.vue";
 
 // import PhosphorIcons from '@phosphor-icons/vue'
 import NavIconLink from './components/NavIconLink.vue'
+import ToggleAnswer from './components/ToggleAnswer.vue'
+import QuestionTag from './components/QuestionTag.vue'
+import QuestionBlock from './components/QuestionBlock.vue'
 
 export default {
 	...Theme,
@@ -32,7 +35,10 @@ export default {
 		app.component("GoBack", GoBack);
 		// 全量注册 phosphor-vue 里的组件
 		// app.use(PhosphorIcons)
-		app.component('NavIconLink', NavIconLink)
+		app.component('NavIconLink', NavIconLink);
+		app.component('ToggleAnswer', ToggleAnswer);
+		app.component('QuestionTag', QuestionTag);
+		app.component('QuestionBlock', QuestionBlock)
 	},
 };
 

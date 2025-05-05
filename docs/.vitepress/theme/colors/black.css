@@ -4,6 +4,7 @@
 	--vp-c-blue-1: #2a408e;
 	--vp-c-blue-2: red;
 	--vp-c-blue-3: #7494ec;
+	--vp-c-blue-4: #603cb3;
 	--vp-c-blue-soft: rgba(110, 156, 190, 0.14);
     
 	--vp-c-yellow-1: #aa9100;
@@ -19,4 +20,6 @@
 	--vp-c-black-2: #27282b;
 
 	--vp-c-gray-1: #a2a19f;
+
+	--vp-c-light-green-1: #20c897;
 }

@@ -11,6 +11,7 @@
 	--vp-c-brand-2: var(--vp-c-orange-1);
 	--vp-c-brand-3: var(--vp-c-blue-3);
 	--vp-c-brand-soft: var(--vp-c-blue-soft);
+	--vp-c-button-bg-1: var(--vp-c-light-green-1);
 }
 
 .dark {
@@ -23,6 +24,8 @@
 	--vp-c-brand-2: var(--vp-c-orange-1);
 	--vp-c-brand-3: var(--vp-c-yellow-3);
 	--vp-c-brand-soft: var(--vp-c-yellow-soft);
+
+	--vp-c-button-bg-1: var(--vp-c-blue-4);
 }
 
 :root {
@@ -259,3 +262,5 @@ main > div > div > pre > code {
 /* .VPNavBarScreenMenu .nav-link:last-child {
 	border-bottom: none;
 } */
+
+/* 题目＋按钮 同行布局 */
