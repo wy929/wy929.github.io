@@ -10,11 +10,13 @@ import Comment from "./components/Comment.vue";
 import ImageViewer from "./components/ImageViewer.vue"
 import GoBack from "./components/GoBack.vue";
 
+
 // import PhosphorIcons from '@phosphor-icons/vue'
 import NavIconLink from './components/NavIconLink.vue'
 import ToggleAnswer from './components/ToggleAnswer.vue'
 import QuestionTag from './components/QuestionTag.vue'
 import QuestionBlock from './components/QuestionBlock.vue'
+import Pron from './components/Pron.vue'
 
 export default {
 	...Theme,
@@ -38,7 +40,8 @@ export default {
 		app.component('NavIconLink', NavIconLink);
 		app.component('ToggleAnswer', ToggleAnswer);
 		app.component('QuestionTag', QuestionTag);
-		app.component('QuestionBlock', QuestionBlock)
+		app.component('QuestionBlock', QuestionBlock);
+		app.component('Pron', Pron)
 	},
 };
 

@@ -1,7 +1,7 @@
 {
   "name": "justin3go.com",
   "version": "2.3.0",
-  "description": "坚持深耕技术领域的 T 型前端程序员, 关注独立开发与 AI，喜欢 Vuejs、Nestjs, 还会点 Python、搜索引擎、NLP、Web3、后端",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,7 +16,9 @@
   "devDependencies": {
     "@types/node": "^20.12.12",
     "feed": "^4.2.2",
+    "markdown-it-container": "^4.0.0",
     "markdown-it-mathjax3": "^4.3.2",
+    "markdown-it-regexp": "^0.4.0",
     "sass": "^1.77.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
