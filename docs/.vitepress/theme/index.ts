@@ -17,6 +17,9 @@ import ToggleAnswer from './components/ToggleAnswer.vue'
 import QuestionTag from './components/QuestionTag.vue'
 import QuestionBlock from './components/QuestionBlock.vue'
 import Pron from './components/Pron.vue'
+import Word from './components/Word.vue'
+import Liaison from './components/Liaison.vue'
+import WordLiaison from './components/WordLiaison.vue'
 
 export default {
 	...Theme,
@@ -41,7 +44,10 @@ export default {
 		app.component('ToggleAnswer', ToggleAnswer);
 		app.component('QuestionTag', QuestionTag);
 		app.component('QuestionBlock', QuestionBlock);
-		app.component('Pron', Pron)
+		app.component('Pron', Pron);
+		app.component('Word', Word);
+		app.component('Liaison', Liaison);
+		app.component('WordLiaison', WordLiaison)
 	},
 };
 
