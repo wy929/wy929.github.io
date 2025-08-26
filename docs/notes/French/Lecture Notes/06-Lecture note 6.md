@@ -2,7 +2,7 @@
 
 | Word   | Pronunciation                                                | Word | Pronunciation |
 | ------ | ------------------------------------------------------------ | ---- | ------------- |
-| citron | <Pron word="citron" phonetic="" lang="fr-FR" :phonetic-only="true" :show-speaker="true"/> |      |               |
+| citron | <Pron word="citron" phonetic="" lang="fr-FR" :phonetic-only="True" :show-speaker="true"/> |      |               |
 | crème  |                                                              |      |               |
 | parc   |                                                              |      |               |
 | gar    |                                                              |      |               |

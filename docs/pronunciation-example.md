@@ -44,6 +44,15 @@ French examples:
 | Default (no icon) | <Pron word="hello" phonetic="həˈloʊ" lang="en-US" />           |
 | With speaker icon | <Pron word="hello" phonetic="həˈloʊ" lang="en-US" :show-speaker="true" /> |
 
+## Sentence Pronunciation Mode
+
+The component now supports pronouncing entire sentences with just a speaker icon:
+
+| Language | Example | Usage |
+|----------|---------|-------|
+| French | J'habite à Paris. <Pron sentence="J'habite à Paris." lang="fr-FR" :show-speaker="true" /> | `<Pron sentence="J'habite à Paris." lang="fr-FR" :show-speaker="true" />` |
+| English | How are you today? <Pron sentence="How are you today?" lang="en-US" :show-speaker="true" /> | `<Pron sentence="How are you today?" lang="en-US" :show-speaker="true" />` |
+
 ## Notes
 
 - Click on the phonetic transcription (IPA notation) to hear the pronunciation

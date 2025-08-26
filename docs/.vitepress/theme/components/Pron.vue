@@ -1,5 +1,18 @@
 <template>
-  <span class="pron-container" :class="{ 'phonetic-only': phoneticOnly }">
+  <!-- Sentence mode: only show speaker icon -->
+  <span v-if="sentence" class="pron-sentence-container">
+    <span 
+      @click="play" 
+      class="pron-speaker-only" 
+      :title="`Click to pronounce sentence (${lang})`"
+      :class="{ 'playing': isPlaying }"
+    >
+      🔊
+    </span>
+  </span>
+
+  <!-- Word/phonetic mode -->
+  <span v-else class="pron-container" :class="{ 'phonetic-only': phoneticOnly }">
     <strong v-if="!phoneticOnly" class="pron-word">{{ word }}</strong>
     <span 
       @click="play" 
@@ -17,8 +30,9 @@
 import { ref, computed } from 'vue'
 
 interface Props {
-  word: string
-  phonetic: string
+  word?: string
+  phonetic?: string
+  sentence?: string  // New: for sentence pronunciation mode
   lang?: string
   phoneticOnly?: boolean
   showSpeaker?: boolean
@@ -34,15 +48,23 @@ const isPlaying = ref(false)
 
 // Remove existing brackets and clean the phonetic notation
 const cleanPhonetic = computed(() => {
-  return props.phonetic.replace(/^\[|\]$/g, '').trim()
+  return props.phonetic?.replace(/^\[|\]$/g, '').trim() || ''
 })
 
 // Generate title text for tooltip
 const getTitleText = computed(() => {
+  if (props.sentence) {
+    return `Click to pronounce sentence (${props.lang})`
+  }
   if (props.phoneticOnly) {
     return `Click to pronounce "${props.word}" (${props.lang})`
   }
   return `Click to pronounce (${props.lang})`
+})
+
+// Get text to pronounce
+const textToPronounce = computed(() => {
+  return props.sentence || props.word || ''
 })
 
 const play = async () => {
@@ -55,7 +77,7 @@ const play = async () => {
       // Stop any ongoing speech
       window.speechSynthesis.cancel()
       
-      const utterance = new SpeechSynthesisUtterance(props.word)
+      const utterance = new SpeechSynthesisUtterance(textToPronounce.value)
       utterance.lang = props.lang
       
       // Adjust speech parameters for better pronunciation
@@ -111,6 +133,40 @@ const play = async () => {
 </script>
 
 <style scoped>
+/* Sentence mode container */
+.pron-sentence-container {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.pron-speaker-only {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  opacity: 0.7;
+}
+
+.pron-speaker-only:hover {
+  background-color: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand-1);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.pron-speaker-only.playing {
+  background-color: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand-1);
+  animation: pulse 1s infinite;
+  opacity: 1;
+}
+
+/* Word/phonetic mode container */
 .pron-container {
   display: inline-flex;
   align-items: center;

@@ -64,5 +64,12 @@ export default defineConfig({
         socialLinks: [
           { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
         ]
+    },
+
+    vite: {
+      server: {
+        host: '0.0.0.0',
+        port: 8964
+      }
     }
 })
